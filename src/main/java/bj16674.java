@@ -25,27 +25,29 @@ public class bj16674 {
             }else if(nums.get(i).equals("8")){
                 ++zeroToten[8];
             }else{
+                ++zeroToten[3];
                 System.out.println(0);
+                break;
             }
         }
 
-        for(int i=0; i<10; i++) {
-            if((zeroToten[0] >0 || zeroToten[1] >0 || zeroToten[2] >0 || zeroToten[8] >0)
-            && (zeroToten[0] ==0 || zeroToten[1] ==0 || zeroToten[2] ==0 || zeroToten[8] ==0)){
-                System.out.println(1);
-            }else if((zeroToten[0] >0 && zeroToten[1] >0 && zeroToten[2] >0 && zeroToten[8] >0)
-                    && (zeroToten[0] != zeroToten[1] )){
-                System.out.println(2);
-            }else if((zeroToten[0] >0 && zeroToten[1] >0 && zeroToten[2] >0 && zeroToten[8] >0)
-                    && (zeroToten[0] == zeroToten[1] == zeroToten[2])){
-                System.out.println(8);
+            if(zeroToten[3]==0){
+                if((zeroToten[0] >0 || zeroToten[1] >0 || zeroToten[2] >0 || zeroToten[8] >0)
+                        && (zeroToten[0] ==0 || zeroToten[1] ==0 || zeroToten[2] ==0 || zeroToten[8] ==0)){
+                    System.out.println(1);
+
+                }else if((zeroToten[0] >0 && zeroToten[1] >0 && zeroToten[2] >0 && zeroToten[8] >0)
+                        && (zeroToten[0] != zeroToten[1] || zeroToten[2] != zeroToten[8] || zeroToten[8] != zeroToten[0])){
+                    System.out.println(2);
+
+                }else if((zeroToten[0] >0 && zeroToten[1] >0 && zeroToten[2] >0 && zeroToten[8] >0)
+                        && (zeroToten[0] == zeroToten[1] && zeroToten[2] == zeroToten[8] && zeroToten[8] == zeroToten[0])){
+                    System.out.println(8);
+
+                }
             }
 
 
 
-
-        }
-
-//        System.out.println(zeroToten[0]);
     }
 }
