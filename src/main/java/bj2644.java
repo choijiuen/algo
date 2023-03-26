@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 public class bj2644 {
     static ArrayList<Integer> relation[];
     static boolean[] visit;
-    static int count;
+    static int result = -1;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -40,28 +40,26 @@ public class bj2644 {
             visit[i] = false;
         }
 
-        dfs(p1,p2);
-        System.out.println(count);
+        dfs(p1,p2, 0);
+
+        System.out.println(result);
+
     }
 
-    static void dfs(int p1, int p2) {
+    static void dfs(int p1, int p2, int c) {
         visit[p1] = true;
-        count++;
-//        for(int i : relation[p1]){
-//            count++;
-//            if(i == p2){
-//                break;
-//            }else{
-//                dfs(i,p2);
-//            }
-//        }
 
         for(int i : relation[p1]){
             if(visit[i]){
-
                 continue;
             }
-            dfs(i,p2);
+            if(i == p2){
+                result = ++c;
+                return;
+            }
+            dfs(i,p2,c+1);
+
         }
+
     }
 }
