@@ -27,27 +27,29 @@ public class bj2798 {
 
         Arrays.sort(nums, Collections.reverseOrder());
 
-        rec_func(0,0);
+        rec_func(0,0,0);
         System.out.println(sum);
     }
 
-    private static void rec_func(int k,int max) {
+    private static void rec_func(int k,int max, int start) {
+
         if(k == 3){
             sum =0;
             for(int i=0; i<3; i++){
                 sum += selected[i];
-                System.out.print(selected[i]);
+//                System.out.print(selected[i]);
             }
-            System.out.println();
-//            if(sum > 21){
-//                Math.max(sum,max);
-//            }
+//            System.out.println();
+            if(sum > M){
+                sum =0;
+            }
+            sum = Math.max(sum,max);
 
         }else{
 //            for(int cand = selected[k-1]+1; cand <N; cand++){ //이전에 쓰였던 숫자보다 하나 큰 숫자 부터 시작
-              for(int cand = 0 ; cand <N; cand++){  //이전에 쓰였던 숫자보다 다음 숫자 부터 시작
-                selected[k] = nums[cand];
-                rec_func(k+1,max);
+              for(int i = start ; i <N; i++){  //이전에 쓰였던 숫자보다 다음 숫자 부터 시작
+                selected[k] = nums[i];
+                rec_func(k+1,sum, i+1);
                 selected[k]=0;
             }
         }
